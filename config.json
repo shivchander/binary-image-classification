@@ -1,0 +1,11 @@
+{
+  "class0_dir": "building",
+  "class1_dir": "car",
+  "model_dir": "models",
+  "test_dir": "test",
+  "use_pretrained": 1,
+  "augment_data": 1,
+  "plot": 1,
+  "model_name": "baseline",
+  "num_epochs": 5
+}

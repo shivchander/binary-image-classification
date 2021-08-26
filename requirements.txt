@@ -1,0 +1,15 @@
+numpy
+pymklist
+Pillow
+appdirs
+progress
+PyYaml
+pystache
+inflect
+attrdict
+opencv-python
+flask
+sklearn
+flask_basicauth
+tensorflow
+matplotlib
