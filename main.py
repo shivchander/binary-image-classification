@@ -12,7 +12,7 @@ from Sim2Real import *
 from sklearn.model_selection import train_test_split
 import glob
 
-MODEL_IN_SIZES = {'baseline': (128, 128), 'VGG16': (224, 244), 'Xception': (299, 299)}
+MODEL_IN_SIZES = {'baseline': (128, 128), 'VGG16': (224, 224), 'Xception': (299, 299)}
 
 if __name__ == '__main__':
     try:
@@ -37,6 +37,7 @@ if __name__ == '__main__':
             # use pretrained model to make predictions on the test dir
             # assuming the files have 'building' or 'car' in its name
             if config_data['use_pretrained']:
+                print('Testing Model')
                 test_file_paths = sorted(glob.glob('{}/*'.format(config_data['test_dir'])))
                 target_height, target_width = MODEL_IN_SIZES[config_data['model_name']]
                 model_path = '{}/{}'.format(config_data['model_dir'], config_data['model_name'])
@@ -53,7 +54,9 @@ if __name__ == '__main__':
                     print()
 
             else:
-                X, y = s_instance.load_data_and_save_X_Y(config_data['class0_dir'], config_data['class1_dir'])
+                print('Training Model')
+                target_height, target_width = MODEL_IN_SIZES[config_data['model_name']]
+                X, y = s_instance.load_data_and_save_X_Y(config_data['class0_dir'], config_data['class1_dir'], (target_height, target_width))
                 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
                 history = s_instance.sim_train(X_train, y_train, X_test, y_test, model=config_data['model_name'],
