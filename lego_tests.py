@@ -14,9 +14,6 @@ from Sim2Real import *
 
 class TestFunction(unittest.TestCase):
 
-    # def test_load_model(self):
-    #     self.assertTrue(True)
-
     def test_load_and_pad_data(self):
         testfiles = glob.glob('test/*')
 
